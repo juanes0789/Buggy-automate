@@ -37,7 +37,6 @@ dependencies {
     implementation "net.serenity-bdd:serenity-junit:$rootProject.ext.serenityVersion"
     implementation "net.serenity-bdd:serenity-screenplay:$rootProject.ext.serenityVersion"
     implementation "net.serenity-bdd:serenity-cucumber:$rootProject.ext.serenityCucumberVersion"
-    implementation 'org.slf4j:slf4j-simple:2.0.5'
     implementation "net.serenity-bdd:serenity-screenplay-webdriver:$rootProject.ext.serenityWebVersion"
 
     //Test compilation
@@ -50,15 +49,25 @@ dependencies {
     compileOnly "org.projectlombok:lombok:${lombokVersion}"
     annotationProcessor  "org.projectlombok:lombok:${lombokVersion}"
     testCompileOnly  "org.projectlombok:lombok:${lombokVersion}"
-
-    //Additional library
-    implementation group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.12.0'
-
 }
 
 tasks.named('test') {
-    // System configs
-
+    // Pasa a las pruebas las propiedades -D de la linea de comandos, por ejemplo:
+    //   ./gradlew clean test -Dcucumber.filter.tags="@smoke"
+    //   ./gradlew clean test -Ddemo.pausa=false
+    //   ./gradlew clean test -Dheadless.mode=true
+    def prefixes = ['cucumber.', 'demo.', 'buggy.', 'webdriver.', 'serenity.', 'headless.', 'chrome.']
+    System.properties.each { key, value ->
+        if (prefixes.any { key.toString().startsWith(it) }) {
+            systemProperty key.toString(), value
+        }
+    }
+    // Siempre vuelve a ejecutar las pruebas aunque el codigo no haya cambiado
+    outputs.upToDateWhen { false }
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        showStandardStreams = false
+    }
 }
 
 test.finalizedBy(aggregate)

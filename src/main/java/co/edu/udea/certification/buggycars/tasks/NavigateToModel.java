@@ -3,11 +3,12 @@ package co.edu.udea.certification.buggycars.tasks;
 import co.edu.udea.certification.buggycars.interactions.Wait;
 import co.edu.udea.certification.buggycars.userinterfaces.HomePage;
 import co.edu.udea.certification.buggycars.userinterfaces.ModelDetailPage;
+import co.edu.udea.certification.buggycars.utils.Constants;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import net.serenitybdd.annotations.Step;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -15,17 +16,19 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 public class NavigateToModel implements Task {
 
     @Override
-    @Step("{0} navega a la pagina de un modelo de auto")
+    @Step("{0} entra a la pagina del segundo modelo del ranking general")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                WaitUntil.the(HomePage.FIRST_MODEL_LINK, isVisible()).forNoMoreThan(20).seconds(),
-                Click.on(HomePage.FIRST_MODEL_LINK),
-                Wait.forSeconds(5),
-                WaitUntil.the(ModelDetailPage.COMMENT_FIELD, isVisible()).forNoMoreThan(20).seconds()
+                Click.on(HomePage.OVERALL_RANKING_LINK),
+                WaitUntil.the(HomePage.SECOND_RANKED_MODEL, isVisible()).forNoMoreThan(Constants.TIMEOUT_SECONDS).seconds(),
+                Wait.forSeconds(2),
+                Click.on(HomePage.SECOND_RANKED_MODEL),
+                WaitUntil.the(ModelDetailPage.VOTE_COUNT, isVisible()).forNoMoreThan(Constants.TIMEOUT_SECONDS).seconds(),
+                Wait.forSeconds(2)
         );
     }
 
-    public static NavigateToModel page() {
+    public static NavigateToModel fromOverallRanking() {
         return instrumented(NavigateToModel.class);
     }
 }

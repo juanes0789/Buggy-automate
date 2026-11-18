@@ -1,52 +1,34 @@
 package co.edu.udea.certification.buggycars.tasks;
 
-import co.edu.udea.certification.buggycars.interactions.Wait;
-import co.edu.udea.certification.buggycars.userinterfaces.HomePage;
-import co.edu.udea.certification.buggycars.userinterfaces.RegisterPage;
+import co.edu.udea.certification.buggycars.models.User;
+import net.serenitybdd.annotations.Step;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
-import net.serenitybdd.screenplay.actions.Click;
-import net.serenitybdd.screenplay.actions.Enter;
-import net.serenitybdd.annotations.Step;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 
+/** Tarea de negocio completa: abrir, diligenciar y enviar el registro. Se reutiliza como precondicion. */
 public class RegisterUser implements Task {
 
+    private final User user;
     private final String username;
-    private final String firstName;
-    private final String lastName;
-    private final String password;
 
-    public RegisterUser(String username, String firstName, String lastName, String password) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
+    public RegisterUser(User user) {
+        this.user = user;
+        this.username = user.username();
     }
 
     @Override
-    @Step("{0} se registra con usuario #username")
+    @Step("{0} se registra con el usuario '#username'")
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
-                Click.on(HomePage.REGISTER_LINK),
-                Wait.forSeconds(2),
-                Enter.theValue(username).into(RegisterPage.USERNAME),
-                Wait.forSeconds(1),
-                Enter.theValue(firstName).into(RegisterPage.FIRST_NAME),
-                Wait.forSeconds(1),
-                Enter.theValue(lastName).into(RegisterPage.LAST_NAME),
-                Wait.forSeconds(1),
-                Enter.theValue(password).into(RegisterPage.PASSWORD),
-                Wait.forSeconds(1),
-                Enter.theValue(password).into(RegisterPage.CONFIRM_PASSWORD),
-                Wait.forSeconds(2),
-                Click.on(RegisterPage.REGISTER_BUTTON),
-                Wait.forSeconds(5)
+                OpenRegistrationForm.now(),
+                FillRegistrationForm.with(user),
+                SubmitRegistration.now()
         );
     }
 
-    public static RegisterUser withData(String username, String firstName, String lastName, String password) {
-        return instrumented(RegisterUser.class, username, firstName, lastName, password);
+    public static RegisterUser as(User user) {
+        return instrumented(RegisterUser.class, user);
     }
 }

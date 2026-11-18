@@ -3,32 +3,35 @@ package co.edu.udea.certification.buggycars.userinterfaces;
 import net.serenitybdd.screenplay.targets.Target;
 import org.openqa.selenium.By;
 
+/** Formulario de registro (/register). */
 public class RegisterPage {
 
-    public static final Target USERNAME = Target.the("campo username registro")
+    private RegisterPage() {
+    }
+
+    public static final Target USERNAME = Target.the("campo Login del registro")
             .located(By.id("username"));
 
-    public static final Target FIRST_NAME = Target.the("campo nombre")
+    public static final Target FIRST_NAME = Target.the("campo First Name")
             .located(By.id("firstName"));
 
-    public static final Target LAST_NAME = Target.the("campo apellido")
+    public static final Target LAST_NAME = Target.the("campo Last Name")
             .located(By.id("lastName"));
 
-    public static final Target PASSWORD = Target.the("campo password")
+    public static final Target PASSWORD = Target.the("campo Password")
             .located(By.id("password"));
 
-    public static final Target CONFIRM_PASSWORD = Target.the("campo confirmar password")
+    public static final Target CONFIRM_PASSWORD = Target.the("campo Confirm Password")
             .located(By.id("confirmPassword"));
 
-    public static final Target REGISTER_BUTTON = Target.the("boton registrar")
-            .located(By.xpath("//button[contains(text(),'Register')]"));
+    public static final Target REGISTER_BUTTON = Target.the("boton Register")
+            .located(By.xpath("//button[@type='submit' and normalize-space()='Register']"));
 
-    public static final Target SUCCESS_MESSAGE = Target.the("mensaje exito registro")
-            .located(By.xpath("//*[contains(normalize-space(.),'Registration is successful') or contains(normalize-space(.),'successful') or contains(@class,'text-success') or contains(@class,'result-success')]"));
+    /** Mensaje que devuelve el servidor al enviar el formulario (exito o error). */
+    public static final Target RESULT_MESSAGE = Target.the("mensaje de resultado del registro")
+            .located(By.cssSelector("div.result.alert"));
 
-    public static final Target ERROR_MESSAGE = Target.the("mensaje error registro")
-            .located(By.xpath("//*[contains(normalize-space(.),'UserAlreadyExists') or contains(normalize-space(.),'already exists') or contains(normalize-space(.),'already taken') or contains(@class,'text-danger') or contains(@class,'alert-danger')]"));
-
-    public static final Target CANCEL_LINK = Target.the("link cancelar")
-            .located(By.xpath("//a[contains(text(),'Cancel')]"));
+    /** Alertas de validacion del formulario. Estan en el DOM pero ocultas hasta que aplican. */
+    public static final Target VALIDATION_ALERTS = Target.the("alertas de validacion del formulario")
+            .located(By.cssSelector("form .form-group .alert.alert-danger"));
 }

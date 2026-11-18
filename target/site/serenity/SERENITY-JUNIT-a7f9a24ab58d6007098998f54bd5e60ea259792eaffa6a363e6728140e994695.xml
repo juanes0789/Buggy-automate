@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Votar y comentar un modelo de auto" skipped="0" tests="2" time="7.47" timestamp="2026-11-18 03:09:43"><testcase name="Un usuario nuevo se registra, inicia sesion, vota y comenta un modelo"/><testcase name="Un visitante sin sesion no puede votar"/></testsuite>
