@@ -3,7 +3,7 @@
 [![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://www.oracle.com/java/)
 [![Gradle](https://img.shields.io/badge/Gradle-9.x-02303A.svg)](https://gradle.org/)
 [![Serenity BDD](https://img.shields.io/badge/Serenity_BDD-4.1.0-brightgreen.svg)](https://serenity-bdd.github.io/)
-[![Cucumber](https://img.shields.io/badge/Gherkin-espa%C3%B1ol-23D96C.svg)](https://cucumber.io/docs/gherkin/languages/)
+[![Cucumber](https://img.shields.io/badge/Gherkin-English-23D96C.svg)](https://cucumber.io/docs/gherkin/reference/)
 [![Screenplay](https://img.shields.io/badge/Pattern-Screenplay-blue.svg)](https://serenity-bdd.github.io/docs/screenplay/screenplay_fundamentals)
 
 Proyecto académico de automatización de pruebas End-to-End (E2E) sobre la aplicación web pública [Buggy Cars Rating](https://buggy.justtestit.org/), desarrollado con el **Patrón Screenplay** sobre **Serenity BDD + Cucumber + Selenium WebDriver**.
@@ -50,9 +50,9 @@ La batería cubre tres funcionalidades, cada una con su ruta feliz y sus caminos
 | Lo que pide el taller | Dónde está |
 |---|---|
 | Proyecto base generado con el scaffold `ScreenplayArchitecture` | Plugin `io.github.jumosqu12.screenplayarchitecture` en `build.gradle`. Los paquetes `exceptions`, `integrations`, `interactions`, `models`, `questions`, `tasks`, `userinterfaces` y `utils` salen del scaffold |
-| Escenarios en archivos **Feature** | `src/test/resources/features/*.feature`, en Gherkin en español (`# language: es`), con historia de usuario, `Antecedentes`, `Esquema del escenario` y tags |
+| Escenarios en archivos **Feature** | `src/test/resources/features/*.feature`, en Gherkin en inglés, con historia de usuario, `Background`, `Scenario Outline` y tags |
 | **Actor** principal definido en el StepDefinition | `Hooks.java` prepara el escenario con `OnStage` + `OnlineCast`, y el actor `"Usuario"` recibe la habilidad `BrowseTheWeb` |
-| Ruta feliz, caminos alternos y excepcionales | Tags `@ruta-feliz`, `@camino-alterno`, `@camino-excepcional` y `@valores-limite` |
+| Ruta feliz, caminos alternos y excepcionales | Tags `@happy-path`, `@alternate-path`, `@exception-path` y `@boundary-values` |
 | **Tasks** en términos del negocio | `tasks/`: `RegisterUser`, `OpenRegistrationForm`, `FillRegistrationForm`, `SubmitRegistration`, `LoginAs`, `Logout`, `NavigateToModel`, `WriteComment`, `SubmitVote`, `OpenHomePage` |
 | **Interactions** ("la menuda") | `interactions/`: `TypeIntoAngularField`, `RefreshPage`, `Wait`, junto con `Click`, `Enter`, `Clear`, `Hit` y `WaitUntil` de Serenity |
 | **Questions** para verificar | `questions/`: `TheRegistrationMessage`, `TheValidationAlerts`, `TheRegisterButton`, `TheUserName`, `TheLoginError`, `TheCommentList`, `TheVoteCount`, `TheVoteStatus` |
@@ -144,8 +144,8 @@ gradlew.bat clean test          # Windows
 # Solo un grupo de escenarios, por tag
 ./gradlew clean test -Dcucumber.filter.tags="@e2e"
 ./gradlew clean test -Dcucumber.filter.tags="@smoke"
-./gradlew clean test -Dcucumber.filter.tags="@valores-limite"
-./gradlew clean test -Dcucumber.filter.tags="@registro and not @valores-limite"
+./gradlew clean test -Dcucumber.filter.tags="@boundary-values"
+./gradlew clean test -Dcucumber.filter.tags="@registration and not @boundary-values"
 
 # Un solo feature
 ./gradlew clean test -Dcucumber.features=src/test/resources/features/comment.feature
@@ -160,7 +160,7 @@ El reporte agregado de Serenity se genera solo al terminar (`test.finalizedBy(ag
 
 ## Escenarios implementados
 
-**16 escenarios** en total (las filas de cada `Esquema del escenario` cuentan como escenarios).
+**16 escenarios** en total (las filas de cada `Scenario Outline` cuentan como escenarios).
 
 ### `register.feature` — Registro (10)
 
@@ -211,8 +211,8 @@ El reporte agregado de Serenity se genera solo al terminar (`test.finalizedBy(ag
 
 - **Ubicación**: [`target/site/serenity/index.html`](target/site/serenity/index.html)
 - Captura de pantalla después de cada paso (`take.screenshots = AFTER_EACH_STEP`).
-- Los `@Step` de las Tasks e Interactions y los `@Subject` de las Questions hacen que cada paso se lea en español en el reporte.
-- Los tags (`@e2e`, `@smoke`, `@valores-limite`...) aparecen en el reporte y sirven para filtrar.
+- Los pasos del Gherkin aparecen en inglés, y debajo de cada uno los `@Step` de las Tasks e Interactions y los `@Subject` de las Questions lo detallan en español.
+- Los tags (`@e2e`, `@smoke`, `@boundary-values`...) aparecen en el reporte y sirven para filtrar.
 - Reporte de accesibilidad activado (`report.accessibility = true`).
 
 ```bash

@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- Nivo Slider -->
+<link rel="stylesheet" href="nivo-slider/3.2/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="nivo-slider/3.2/themes/default/default.css" type="text/css" media="screen" />
+<script src="nivo-slider/3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        var screenshotIndex = getUrlVars()["screenshot"];
+
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                startSlide: screenshotIndex,
+                effect: 'fade',
+                animSpeed: 200,
+                manualAdvance: true
+            });
+        });
+
+        $(window).keydown(function(e) {
+            switch(e.which) {
+                case 37:
+                    $('a.nivo-prevNav').click();
+                    break;
+                case 39:
+                    $('a.nivo-nextNav').click();
+                    break;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Serenity BDD Report</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="736b1aa347ad0cc02b60562823f1ec2654d77d4dedca53e5400dc635edd55b88.html">Registro De Usuario En Buggy Cars Rating</a></span>
+                > <span class="truncate-60"><a
+                    href="272358d5bd2841c756a1ad2f88e936ad89d5a421ecfa541f8606fb28fa7dae4f.html">Registration fails when the password breaks the policy (<rule>) </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 18-11-2026 15:40</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">Registro De Usuario En Buggy Cars Rating </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="e6e70da8551c8e55a563847735c55b67ced7e9c7b41bedd1d4147ccef57bae38.html">Boundary-Values
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="b85b31435c7b7eb0dd9ec5f1fc96cf85427cb61b987d23183dcec16199f1107f.html">Exception-Path
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="34658a1663fcf042bd7acb3325affbe4e647c8acd84d0228be2f52e1381e61b9.html">10 To 30 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="1b8d8fd60b8d788fb882ab7ba41b3558c73fab172c80d2125b84e1734a41a011.html">Registration
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">Registration fails when the password breaks the policy ()
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+    <div class="story-title">
+        <h3>Scenario:</h3>
+        <div class="scenario">When the user opens the registration form<br>And fills in the form with a new user, first name "Juan", last name "Perez" and password "&lt;password&gt;"<br>And submits the registration form<br>Then the system shows the registration message "&lt;message&gt;"</div>
+    </div>
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+        <div class="slider-wrapper theme-default">
+            <div id="slider">
+                <img src="fe2f9e2640905fb1b02303bc631dbff018256ebaba23c192310edc38ada3247e.png" title=" 1: Registration fails when the password breaks the policy (fewer than 6 characters) ({rule=fewer than 6 characters, password=Ab1!x, message=minimum field size of 6})" width="0"/>
+                <img src="fe2f9e2640905fb1b02303bc631dbff018256ebaba23c192310edc38ada3247e.png" title=" Given the user is on the Buggy Cars Rating home page" width="0"/>
+                <img src="fe2f9e2640905fb1b02303bc631dbff018256ebaba23c192310edc38ada3247e.png" title=" Usuario abre la pagina principal de Buggy Cars Rating" width="0"/>
+                <img src="fe2f9e2640905fb1b02303bc631dbff018256ebaba23c192310edc38ada3247e.png" title=" Usuario opens the browser at https://buggy.justtestit.org/" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre la pagina principal de Buggy Cars Rating (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Given the user is on the Buggy Cars Rating home page (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario clicks on link Register" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form (completed)" width="0"/>
+                <img src="44b9cca946198089d019647a843521bdbf74f72ef0d5e592e9e4f5b1278d9a87.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Ab1!x&quot;" width="0"/>
+                <img src="44b9cca946198089d019647a843521bdbf74f72ef0d5e592e9e4f5b1278d9a87.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy17950344068828, firstName=Juan, lastName=Perez, password=Ab1!x, confirmPassword=Ab1!x]name'" width="0"/>
+                <img src="44b9cca946198089d019647a843521bdbf74f72ef0d5e592e9e4f5b1278d9a87.png" title=" Usuario enters 'buggy17950344068828' into campo Login del registro" width="0"/>
+                <img src="44b9cca946198089d019647a843521bdbf74f72ef0d5e592e9e4f5b1278d9a87.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="44b9cca946198089d019647a843521bdbf74f72ef0d5e592e9e4f5b1278d9a87.png" title=" Usuario enters 'Juan' into campo First Name" width="0"/>
+                <img src="579e111f7dc492396a5cfd9cd1aec126529df3c30b95985a335e78a0e63ac961.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="579e111f7dc492396a5cfd9cd1aec126529df3c30b95985a335e78a0e63ac961.png" title=" Usuario enters 'Perez' into campo Last Name" width="0"/>
+                <img src="28f8ab8c0cbd264ef0dff993c76751c14b8c2c3cf93677084b9c04c3952d1419.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="28f8ab8c0cbd264ef0dff993c76751c14b8c2c3cf93677084b9c04c3952d1419.png" title=" Usuario enters 'Ab1!x' into campo Password" width="0"/>
+                <img src="e0477498b48faea542cfce483d4e382a3a4c758f7a722f7e316e366e115d0e56.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="e0477498b48faea542cfce483d4e382a3a4c758f7a722f7e316e366e115d0e56.png" title=" Usuario enters 'Ab1!x' into campo Confirm Password" width="0"/>
+                <img src="e0477498b48faea542cfce483d4e382a3a4c758f7a722f7e316e366e115d0e56.png" title=" Usuario types 'TAB' in campo Confirm Password" width="0"/>
+                <img src="7b1dbd57b07f09956c6aee14faffc239d238348fa3239577c5cfa0f107076dde.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="7b1dbd57b07f09956c6aee14faffc239d238348fa3239577c5cfa0f107076dde.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy17950344068828, firstName=Juan, lastName=Perez, password=Ab1!x, confirmPassword=Ab1!x]name' (completed)" width="0"/>
+                <img src="7b1dbd57b07f09956c6aee14faffc239d238348fa3239577c5cfa0f107076dde.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Ab1!x&quot; (completed)" width="0"/>
+                <img src="2a86739d1fe5481a7bedd4083eea68b92aff4d24c1ac9d45a838427f8cdc9ac6.png" title=" And submits the registration form" width="0"/>
+                <img src="2a86739d1fe5481a7bedd4083eea68b92aff4d24c1ac9d45a838427f8cdc9ac6.png" title=" Usuario envia el formulario de registro" width="0"/>
+                <img src="2a86739d1fe5481a7bedd4083eea68b92aff4d24c1ac9d45a838427f8cdc9ac6.png" title=" Usuario clicks on boton Register" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" Usuario envia el formulario de registro (completed)" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" And submits the registration form (completed)" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" Then the system shows the registration message &quot;minimum field size of 6&quot;" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" Then el mensaje de resultado del registro should be a string containing 'minimum field size of 6'" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" Then the system shows the registration message &quot;minimum field size of 6&quot; (completed)" width="0"/>
+                <img src="97fc8444ad2968569c27d5babbf4dbd35f29f9a83b5c8ae62b88703dfde4e359.png" title=" 1: Registration fails when the password breaks the policy (fewer than 6 characters) ({rule=fewer than 6 characters, password=Ab1!x, message=minimum field size of 6}) (completed)" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" 2: Registration fails when the password breaks the policy (fewer than 8 characters) ({rule=fewer than 8 characters, password=Ab1!xy, message=Password not long enough})" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Given the user is on the Buggy Cars Rating home page" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario abre la pagina principal de Buggy Cars Rating" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario opens the browser at https://buggy.justtestit.org/" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre la pagina principal de Buggy Cars Rating (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Given the user is on the Buggy Cars Rating home page (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario clicks on link Register" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Ab1!xy&quot;" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy17950344222729, firstName=Juan, lastName=Perez, password=Ab1!xy, confirmPassword=Ab1!xy]name'" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario enters 'buggy17950344222729' into campo Login del registro" width="0"/>
+                <img src="e0972c0ab378cac211cf912cad146b612ec0561169c21d0a22db97eefab5b0d4.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="e0972c0ab378cac211cf912cad146b612ec0561169c21d0a22db97eefab5b0d4.png" title=" Usuario enters 'Juan' into campo First Name" width="0"/>
+                <img src="7c0d2120f0327769ccc98d602756fbf484d8b43fadf5a6baa12d34f8a8424c2a.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="7c0d2120f0327769ccc98d602756fbf484d8b43fadf5a6baa12d34f8a8424c2a.png" title=" Usuario enters 'Perez' into campo Last Name" width="0"/>
+                <img src="7fd778ee7ae167a8d53d21e640edef1d0b3ebc88c598c354568b37eff91eb8f6.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="7fd778ee7ae167a8d53d21e640edef1d0b3ebc88c598c354568b37eff91eb8f6.png" title=" Usuario enters 'Ab1!xy' into campo Password" width="0"/>
+                <img src="e2d577421720b98dea6042722db4f8b98b943e4be7dae03a1c44e0e115816c72.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="e2d577421720b98dea6042722db4f8b98b943e4be7dae03a1c44e0e115816c72.png" title=" Usuario enters 'Ab1!xy' into campo Confirm Password" width="0"/>
+                <img src="4cf3a7b6d7fad4080d0d00deee40a9a61d68fcc5626819330e797445e249fb78.png" title=" Usuario types 'TAB' in campo Confirm Password" width="0"/>
+                <img src="7d5f7be4676d9e29fb68ede382e9228d99003d7608df782dd4944b6b08103b75.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="7d5f7be4676d9e29fb68ede382e9228d99003d7608df782dd4944b6b08103b75.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy17950344222729, firstName=Juan, lastName=Perez, password=Ab1!xy, confirmPassword=Ab1!xy]name' (completed)" width="0"/>
+                <img src="7d5f7be4676d9e29fb68ede382e9228d99003d7608df782dd4944b6b08103b75.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Ab1!xy&quot; (completed)" width="0"/>
+                <img src="68ef4769140caac9344fe090af2a98dbd24bfc4ebec1bc074932e9e5160f8e4f.png" title=" And submits the registration form" width="0"/>
+                <img src="68ef4769140caac9344fe090af2a98dbd24bfc4ebec1bc074932e9e5160f8e4f.png" title=" Usuario envia el formulario de registro" width="0"/>
+                <img src="68ef4769140caac9344fe090af2a98dbd24bfc4ebec1bc074932e9e5160f8e4f.png" title=" Usuario clicks on boton Register" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" Usuario envia el formulario de registro (completed)" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" And submits the registration form (completed)" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" Then the system shows the registration message &quot;Password not long enough&quot;" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" Then el mensaje de resultado del registro should be a string containing 'Password not long enough'" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" Then the system shows the registration message &quot;Password not long enough&quot; (completed)" width="0"/>
+                <img src="b66f7c5f69baca8f340be41dd37e7b2bbd9a0370712884b156604252319acd15.png" title=" 2: Registration fails when the password breaks the policy (fewer than 8 characters) ({rule=fewer than 8 characters, password=Ab1!xy, message=Password not long enough}) (completed)" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" 3: Registration fails when the password breaks the policy (no uppercase letters) ({rule=no uppercase letters, password=abcdef1!, message=Password must have uppercase characters})" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Given the user is on the Buggy Cars Rating home page" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario abre la pagina principal de Buggy Cars Rating" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario opens the browser at https://buggy.justtestit.org/" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre la pagina principal de Buggy Cars Rating (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Given the user is on the Buggy Cars Rating home page (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" When the user opens the registration form" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre el formulario de registro" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario clicks on link Register" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;abcdef1!&quot;" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy179503443987510, firstName=Juan, lastName=Perez, password=abcdef1!, confirmPassword=abcdef1!]name'" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario enters 'buggy179503443987510' into campo Login del registro" width="0"/>
+                <img src="7bd694ef8bac57946951ee6317affeef824ec70f225803e1bb374b66bf91af40.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="7bd694ef8bac57946951ee6317affeef824ec70f225803e1bb374b66bf91af40.png" title=" Usuario enters 'Juan' into campo First Name" width="0"/>
+                <img src="0b0e921dcf4866e78ab45376108e9eddff74c1a49875de01328df74581897304.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="0b0e921dcf4866e78ab45376108e9eddff74c1a49875de01328df74581897304.png" title=" Usuario enters 'Perez' into campo Last Name" width="0"/>
+                <img src="255ef9de8a5c732fa8f7148ca369b04ddfb7e909b3526604745cdd6b02c120e7.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="255ef9de8a5c732fa8f7148ca369b04ddfb7e909b3526604745cdd6b02c120e7.png" title=" Usuario enters 'abcdef1!' into campo Password" width="0"/>
+                <img src="2eafd365b3703d6f1d9868ff9a111df31dd90eb6a9da8155c0ba0ccf5625afd7.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="2eafd365b3703d6f1d9868ff9a111df31dd90eb6a9da8155c0ba0ccf5625afd7.png" title=" Usuario enters 'abcdef1!' into campo Confirm Password" width="0"/>
+                <img src="2eafd365b3703d6f1d9868ff9a111df31dd90eb6a9da8155c0ba0ccf5625afd7.png" title=" Usuario types 'TAB' in campo Confirm Password" width="0"/>
+                <img src="3eded96dc80853b1ba128e608b9e0ca6021defeff452d2adcfee52fd292e4b97.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="3eded96dc80853b1ba128e608b9e0ca6021defeff452d2adcfee52fd292e4b97.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy179503443987510, firstName=Juan, lastName=Perez, password=abcdef1!, confirmPassword=abcdef1!]name' (completed)" width="0"/>
+                <img src="3eded96dc80853b1ba128e608b9e0ca6021defeff452d2adcfee52fd292e4b97.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;abcdef1!&quot; (completed)" width="0"/>
+                <img src="b05bc9295f261be94392c1a5f1adb01429f2c96ba39b111511eb3aebae6262de.png" title=" And submits the registration form" width="0"/>
+                <img src="b05bc9295f261be94392c1a5f1adb01429f2c96ba39b111511eb3aebae6262de.png" title=" Usuario envia el formulario de registro" width="0"/>
+                <img src="b05bc9295f261be94392c1a5f1adb01429f2c96ba39b111511eb3aebae6262de.png" title=" Usuario clicks on boton Register" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" Usuario envia el formulario de registro (completed)" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" And submits the registration form (completed)" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" Then the system shows the registration message &quot;Password must have uppercase characters&quot;" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" Then el mensaje de resultado del registro should be a string containing 'Password must have uppercase characters'" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" Then the system shows the registration message &quot;Password must have uppercase characters&quot; (completed)" width="0"/>
+                <img src="6163b87fa6bea4e9802ed657c10650c48383f051d25655be746f1a00c5303318.png" title=" 3: Registration fails when the password breaks the policy (no uppercase letters) ({rule=no uppercase letters, password=abcdef1!, message=Password must have uppercase characters}) (completed)" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" 4: Registration fails when the password breaks the policy (no symbols) ({rule=no symbols, password=Abcdef12, message=Password must have symbol characters})" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Given the user is on the Buggy Cars Rating home page" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario abre la pagina principal de Buggy Cars Rating" width="0"/>
+                <img src="9dd802be5fcd7f89691249f2c43746712217ae5e94a5f2913ebd0dcc75d3c5c2.png" title=" Usuario opens the browser at https://buggy.justtestit.org/" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre la pagina principal de Buggy Cars Rating (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Given the user is on the Buggy Cars Rating home page (completed)" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" When the user opens the registration form" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario abre el formulario de registro" width="0"/>
+                <img src="c80af99c87ccc9069123bba9a6d3697199425f082c82b7da452f6e8ff51a3886.png" title=" Usuario clicks on link Register" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" Usuario abre el formulario de registro (completed)" width="0"/>
+                <img src="2a2241c0ad4f4da4330ff82777b670a7c85e84737d4de426e1190506c051519b.png" title=" When the user opens the registration form (completed)" width="0"/>
+                <img src="8539178b7fe4363720bdd06209268fa8e7f236551a5a0bfb5bf5e79fc2e0eeda.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Abcdef12&quot;" width="0"/>
+                <img src="8539178b7fe4363720bdd06209268fa8e7f236551a5a0bfb5bf5e79fc2e0eeda.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy179503445475811, firstName=Juan, lastName=Perez, password=Abcdef12, confirmPassword=Abcdef12]name'" width="0"/>
+                <img src="8539178b7fe4363720bdd06209268fa8e7f236551a5a0bfb5bf5e79fc2e0eeda.png" title=" Usuario enters 'buggy179503445475811' into campo Login del registro" width="0"/>
+                <img src="8539178b7fe4363720bdd06209268fa8e7f236551a5a0bfb5bf5e79fc2e0eeda.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="8539178b7fe4363720bdd06209268fa8e7f236551a5a0bfb5bf5e79fc2e0eeda.png" title=" Usuario enters 'Juan' into campo First Name" width="0"/>
+                <img src="94563402f392ff6734c9527b71430d1679ea5bd67382c4bd721c8c8c532a929d.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="94563402f392ff6734c9527b71430d1679ea5bd67382c4bd721c8c8c532a929d.png" title=" Usuario enters 'Perez' into campo Last Name" width="0"/>
+                <img src="d52fa59a7474007239e41c767b10d565c835869c0e4d93f2cd2ebe3a0f1546d4.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="d52fa59a7474007239e41c767b10d565c835869c0e4d93f2cd2ebe3a0f1546d4.png" title=" Usuario enters 'Abcdef12' into campo Password" width="0"/>
+                <img src="a81d827fb79fcf87c5d69ef697e963d3c5df944be3eca85ed6bbc2fff8bb308e.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="a81d827fb79fcf87c5d69ef697e963d3c5df944be3eca85ed6bbc2fff8bb308e.png" title=" Usuario enters 'Abcdef12' into campo Confirm Password" width="0"/>
+                <img src="a81d827fb79fcf87c5d69ef697e963d3c5df944be3eca85ed6bbc2fff8bb308e.png" title=" Usuario types 'TAB' in campo Confirm Password" width="0"/>
+                <img src="81727c8dc88d0a00997d9ac580d8513fe242067251942a2cedc060ee8953f923.png" title=" Usuario hace una pausa de 1 segundos para observar la prueba" width="0"/>
+                <img src="81727c8dc88d0a00997d9ac580d8513fe242067251942a2cedc060ee8953f923.png" title=" Usuario diligencia el formulario de registro con el username 'User[username=buggy179503445475811, firstName=Juan, lastName=Perez, password=Abcdef12, confirmPassword=Abcdef12]name' (completed)" width="0"/>
+                <img src="81727c8dc88d0a00997d9ac580d8513fe242067251942a2cedc060ee8953f923.png" title=" And fills in the form with a new user, first name &quot;Juan&quot;, last name &quot;Perez&quot; and password &quot;Abcdef12&quot; (completed)" width="0"/>
+                <img src="d330e8cbf70492201018b556ab8a0bb0daccc8728c6af5f07fedce7091a9db63.png" title=" And submits the registration form" width="0"/>
+                <img src="d330e8cbf70492201018b556ab8a0bb0daccc8728c6af5f07fedce7091a9db63.png" title=" Usuario envia el formulario de registro" width="0"/>
+                <img src="d330e8cbf70492201018b556ab8a0bb0daccc8728c6af5f07fedce7091a9db63.png" title=" Usuario clicks on boton Register" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" Usuario hace una pausa de 2 segundos para observar la prueba" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" Usuario envia el formulario de registro (completed)" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" And submits the registration form (completed)" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" Then the system shows the registration message &quot;Password must have symbol characters&quot;" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" Then el mensaje de resultado del registro should be a string containing 'Password must have symbol characters'" width="0"/>
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" Then the system shows the registration message &quot;Password must have symbol characters&quot; (completed)" width="0"/>
+
+                <img src="ee3d1447b99ea1852a53bacccfb301b6d0e2f8eae2dc8dc6cc9206f0be73dc17.png" title=" 4: Registration fails when the password breaks the policy (no symbols) ({rule=no symbols, password=Abcdef12, message=Password must have symbol characters}) (completed): <span class='success-color'>SUCCESS</span>" width="0"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.0.46</span>
+</div>
+</body>
+</html>

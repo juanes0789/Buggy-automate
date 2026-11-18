@@ -15,9 +15,9 @@ import co.edu.udea.certification.buggycars.userinterfaces.ModelDetailPage;
 import co.edu.udea.certification.buggycars.utils.ActorMemory;
 import co.edu.udea.certification.buggycars.utils.Constants;
 import co.edu.udea.certification.buggycars.utils.TestData;
-import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Dado;
-import io.cucumber.java.es.Entonces;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.questions.Visibility;
 
@@ -30,9 +30,9 @@ import static org.hamcrest.Matchers.is;
 
 public class VoteStepDefinitions {
 
-    // ===== DADO =====
+    // ===== GIVEN =====
 
-    @Dado("que el usuario se registra e inicia sesion con una cuenta nueva")
+    @Given("the user signs up and logs in with a new account")
     public void seRegistraEIniciaSesion() {
         Actor actor = theActorInTheSpotlight();
         User user = User.unique("Auto", "Tester", Constants.DEFAULT_PASSWORD);
@@ -45,9 +45,9 @@ public class VoteStepDefinitions {
         actor.remember(ActorMemory.REGISTERED_USER, user);
     }
 
-    // ===== CUANDO =====
+    // ===== WHEN =====
 
-    @Cuando("navega a un modelo del ranking general")
+    @When("the user goes to a model from the overall ranking")
     public void navegaAlModeloMasPopular() {
         Actor actor = theActorInTheSpotlight();
         actor.attemptsTo(NavigateToModel.fromOverallRanking());
@@ -55,21 +55,21 @@ public class VoteStepDefinitions {
     }
 
     /** Se agrega un identificador unico: asi se verifica el comentario de ESTA ejecucion y no uno viejo. */
-    @Cuando("escribe el comentario {string}")
+    @When("writes the comment {string}")
     public void escribeElComentario(String comment) {
         String uniqueComment = TestData.uniqueText(comment);
         theActorInTheSpotlight().remember(ActorMemory.COMMENT, uniqueComment);
         theActorInTheSpotlight().attemptsTo(WriteComment.withText(uniqueComment));
     }
 
-    @Cuando("envia el voto")
+    @When("submits the vote")
     public void enviaElVoto() {
         theActorInTheSpotlight().attemptsTo(SubmitVote.now());
     }
 
-    // ===== ENTONCES =====
+    // ===== THEN =====
 
-    @Entonces("el comentario queda registrado en la lista de comentarios del modelo")
+    @Then("the comment appears in the list of comments of the model")
     public void elComentarioQuedaRegistrado() {
         String comment = theActorInTheSpotlight().recall(ActorMemory.COMMENT);
         theActorInTheSpotlight().should(
@@ -79,7 +79,7 @@ public class VoteStepDefinitions {
         );
     }
 
-    @Entonces("el conteo de votos del modelo aumenta")
+    @Then("the vote count of the model increases")
     public void elConteoDeVotosAumenta() {
         Integer votesBefore = theActorInTheSpotlight().recall(ActorMemory.VOTES_BEFORE);
         theActorInTheSpotlight().should(
@@ -89,14 +89,14 @@ public class VoteStepDefinitions {
         );
     }
 
-    @Entonces("el sistema muestra el mensaje de votacion {string}")
+    @Then("the system shows the voting message {string}")
     public void muestraElMensajeDeVotacion(String expectedMessage) {
         theActorInTheSpotlight().should(
                 seeThat(TheVoteStatus.displayed(), equalTo(expectedMessage))
         );
     }
 
-    @Entonces("(ya )no se muestra el formulario para votar")
+    @Then("the voting form is not shown")
     public void noSeMuestraElFormularioParaVotar() {
         theActorInTheSpotlight().should(
                 seeThat("el campo de comentario es visible", Visibility.of(ModelDetailPage.COMMENT_FIELD), is(false)),

@@ -1,24 +1,23 @@
-# language: es
-@votacion
-Característica: Votar y comentar un modelo de auto
-  Como usuario registrado de Buggy Cars Rating
-  Quiero votar por un modelo y dejar un comentario
-  Para compartir mi opinion con otros usuarios
+@voting
+Feature: Vote for and comment on a car model
+  As a registered user of Buggy Cars Rating
+  I want to vote for a model and leave a comment
+  So that I can share my opinion with other users
 
-  @e2e @smoke @ruta-feliz
-  Escenario: Un usuario nuevo se registra, inicia sesion, vota y comenta un modelo
-    Dado que el usuario se registra e inicia sesion con una cuenta nueva
-    Cuando navega a un modelo del ranking general
-    Y escribe el comentario "Excelente auto para pruebas automatizadas UdeA 2026"
-    Y envia el voto
-    Entonces el comentario queda registrado en la lista de comentarios del modelo
-    Y el conteo de votos del modelo aumenta
-    Y el sistema muestra el mensaje de votacion "Thank you for your vote!"
-    Y ya no se muestra el formulario para votar
+  @e2e @smoke @happy-path
+  Scenario: A new user signs up, logs in, votes for and comments on a model
+    Given the user signs up and logs in with a new account
+    When the user goes to a model from the overall ranking
+    And writes the comment "Great car for automated testing UdeA 2026"
+    And submits the vote
+    Then the comment appears in the list of comments of the model
+    And the vote count of the model increases
+    And the system shows the voting message "Thank you for your vote!"
+    And the voting form is not shown
 
-  @camino-excepcional
-  Escenario: Un visitante sin sesion no puede votar
-    Dado que el usuario se encuentra en la pagina principal de Buggy Cars Rating
-    Cuando navega a un modelo del ranking general
-    Entonces el sistema muestra el mensaje de votacion "You need to be logged in to vote."
-    Y no se muestra el formulario para votar
+  @exception-path
+  Scenario: A visitor who is not logged in cannot vote
+    Given the user is on the Buggy Cars Rating home page
+    When the user goes to a model from the overall ranking
+    Then the system shows the voting message "You need to be logged in to vote."
+    And the voting form is not shown

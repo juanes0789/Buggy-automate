@@ -10,8 +10,8 @@ import co.edu.udea.certification.buggycars.tasks.SubmitRegistration;
 import co.edu.udea.certification.buggycars.utils.ActorMemory;
 import co.edu.udea.certification.buggycars.utils.Constants;
 import co.edu.udea.certification.buggycars.utils.TestData;
-import io.cucumber.java.es.Cuando;
-import io.cucumber.java.es.Entonces;
+import io.cucumber.java.en.When;
+import io.cucumber.java.en.Then;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -21,66 +21,66 @@ import static org.hamcrest.Matchers.is;
 
 public class RegisterStepDefinitions {
 
-    // ===== CUANDO =====
+    // ===== WHEN =====
 
-    @Cuando("abre el formulario de registro")
+    @When("the user opens the registration form")
     public void abreElFormularioDeRegistro() {
         theActorInTheSpotlight().attemptsTo(OpenRegistrationForm.now());
     }
 
-    @Cuando("diligencia el formulario con un usuario nuevo, nombre {string}, apellido {string} y password {string}")
+    @When("fills in the form with a new user, first name {string}, last name {string} and password {string}")
     public void diligenciaConUsuarioNuevo(String firstName, String lastName, String password) {
         fill(User.unique(firstName, lastName, password));
     }
 
-    @Cuando("diligencia el formulario con el mismo username del usuario existente")
+    @When("fills in the form with the username of the existing user")
     public void diligenciaConUsernameExistente() {
         User existing = theActorInTheSpotlight().recall(ActorMemory.REGISTERED_USER);
         fill(User.withUsername(existing.username(), "Juan", "Perez", Constants.DEFAULT_PASSWORD));
     }
 
-    @Cuando("diligencia el formulario con username {string}, nombre {string}, apellido {string} y password {string}")
+    @When("fills in the form with username {string}, first name {string}, last name {string} and password {string}")
     public void diligenciaConDatos(String username, String firstName, String lastName, String password) {
         fill(User.withUsername(username, firstName, lastName, password));
     }
 
-    @Cuando("diligencia el formulario con nombre {string}, apellido {string}, password {string} y confirmacion {string}")
+    @When("fills in the form with first name {string}, last name {string}, password {string} and confirmation {string}")
     public void diligenciaConConfirmacionDistinta(String firstName, String lastName, String password, String confirmation) {
         fill(User.unique(firstName, lastName, password).withConfirmation(confirmation));
     }
 
-    @Cuando("diligencia el formulario con un username de {int} caracteres")
+    @When("fills in the form with a username of {int} characters")
     public void diligenciaConUsernameDeLongitud(int length) {
         fill(User.withUsername(TestData.repeat('u', length), "Juan", "Perez", Constants.DEFAULT_PASSWORD));
     }
 
-    @Cuando("envia el formulario de registro")
+    @When("submits the registration form")
     public void enviaElFormulario() {
         theActorInTheSpotlight().attemptsTo(SubmitRegistration.now());
     }
 
-    // ===== ENTONCES =====
+    // ===== THEN =====
 
-    @Entonces("el sistema muestra el mensaje de registro {string}")
+    @Then("the system shows the registration message {string}")
     public void muestraElMensajeDeRegistro(String expectedMessage) {
         theActorInTheSpotlight().should(
                 seeThat(TheRegistrationMessage.displayed(), containsString(expectedMessage))
         );
     }
 
-    @Entonces("se muestra la alerta de validacion {string}")
+    @Then("the validation alert {string} is shown")
     public void muestraLaAlertaDeValidacion(String expectedAlert) {
         theActorInTheSpotlight().should(
                 seeThat(TheValidationAlerts.visible(), hasItem(expectedAlert))
         );
     }
 
-    @Entonces("el boton de registro queda {word}")
+    @Then("the register button is {word}")
     public void elBotonDeRegistroQueda(String state) {
         boolean expectedEnabled = switch (state) {
-            case "habilitado" -> true;
-            case "deshabilitado" -> false;
-            default -> throw new IllegalArgumentException("Estado no soportado: " + state);
+            case "enabled" -> true;
+            case "disabled" -> false;
+            default -> throw new IllegalArgumentException("Unsupported state: " + state);
         };
         theActorInTheSpotlight().should(
                 seeThat(TheRegisterButton.isEnabled(), is(expectedEnabled))

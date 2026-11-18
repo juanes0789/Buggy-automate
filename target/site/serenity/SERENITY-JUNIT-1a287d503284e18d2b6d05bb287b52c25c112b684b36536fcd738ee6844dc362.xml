@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="0" failures="0" name="Vote for and comment on a car model" skipped="0" tests="2" time="6.27" timestamp="2026-11-18 03:34:53"><testcase name="A new user signs up, logs in, votes for and comments on a model"/><testcase name="A visitor who is not logged in cannot vote"/></testsuite>
