@@ -1,10 +1,10 @@
 package co.edu.udea.certification.buggycars.questions;
 
 import co.edu.udea.certification.buggycars.userinterfaces.RegisterPage;
-import net.serenitybdd.screenplay.annotations.Subject;
-import net.serenitybdd.core.pages.WebElementFacade;
+import co.edu.udea.certification.buggycars.utils.Screen;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
+import net.serenitybdd.screenplay.annotations.Subject;
 
 import java.util.List;
 
@@ -14,8 +14,7 @@ public class TheValidationAlerts implements Question<List<String>> {
 
     @Override
     public List<String> answeredBy(Actor actor) {
-        return RegisterPage.VALIDATION_ALERTS.resolveAllFor(actor).stream()
-                .filter(WebElementFacade::isVisible)
+        return Screen.displayedElements(actor, RegisterPage.VALIDATION_ALERTS).stream()
                 .map(alert -> alert.getText().trim())
                 .toList();
     }

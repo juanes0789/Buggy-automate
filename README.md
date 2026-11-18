@@ -199,7 +199,7 @@ El reporte agregado de Serenity se genera solo al terminar (`test.finalizedBy(ag
 
 | Principio | Cómo se aplica |
 |---|---|
-| **Fast** | Las pausas de demo se apagan con `-Ddemo.pausa=false`. La sincronización real con la página usa `WaitUntil`, no pausas fijas. Con `-Dcucumber.filter.tags` se corre solo lo necesario |
+| **Fast** | Las pausas de demo se apagan con `-Ddemo.pausa=false`: la suite completa baja de unos 6 minutos a unos 2. La sincronización real usa `WaitUntil`, y las verificaciones de que algo *no* está (`TheElementIsDisplayed`) leen la pantalla sin esperar. Con `-Dcucumber.filter.tags` se corre solo lo necesario |
 | **Independent** | Cada escenario abre un navegador nuevo (`restart.browser.for.each = scenario`) y crea sus propios datos. Ningún escenario depende de otro ni de usuarios creados a mano en el ambiente |
 | **Repeatable** | Los usernames y comentarios llevan un identificador único (`TestData`), así que el resultado es el mismo en cada ejecución |
 | **Self-validating** | Cada escenario termina con `seeThat(...)` sobre una Question. Las verificaciones del E2E usan `orComplainWith(ExpectedResultNotFoundError.class, ...)` para que el reporte explique el fallo con un mensaje de negocio |
@@ -230,6 +230,7 @@ xdg-open target/site/serenity/index.html      # Linux
 - **Recarga después de votar.** Buggy Cars no actualiza la pantalla cuando se vota. `RefreshPage` recarga la página (con reintentos) hasta que aparece el mensaje del voto guardado.
 - **Un voto por usuario y modelo.** Como el sitio solo permite votar una vez, el E2E registra un usuario nuevo en cada ejecución.
 - **Pausas de demo separadas de la sincronización.** `Wait` solo sirve para observar la prueba, y la espera real la hace `WaitUntil` en cada Task. Por eso apagar las pausas no rompe las pruebas.
+- **Verificar ausencias sin esperar.** Cuando se espera que algo *no* esté (el link Logout, el formulario de voto), Selenium gastaría toda la espera implícita antes de responder. `utils/Screen` lee la pantalla con espera cero, y lo usan `TheElementIsDisplayed` y `TheValidationAlerts`. Esto bajó la suite de 9:21 a 5:44 con pausas, y de 5:09 a 2:11 sin pausas.
 - **Localizadores acotados.** Los `Target` se buscan dentro del componente (`//my-login//...`, `//my-model//...`) para no confundir elementos parecidos de otras partes de la página.
 
 ---

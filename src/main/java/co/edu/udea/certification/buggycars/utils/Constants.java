@@ -6,6 +6,8 @@ public final class Constants {
     public static final String BASE_URL = System.getProperty("buggy.url", "https://buggy.justtestit.org/");
     public static final String DEFAULT_PASSWORD = "Test1234!";
     public static final int TIMEOUT_SECONDS = 20;
+    /** Debe coincidir con webdriver.timeouts.implicitlywait de serenity.conf. */
+    public static final long IMPLICIT_WAIT_MILLIS = 10_000L;
 
     private Constants() {
     }

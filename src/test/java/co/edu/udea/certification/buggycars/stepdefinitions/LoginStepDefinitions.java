@@ -1,6 +1,7 @@
 package co.edu.udea.certification.buggycars.stepdefinitions;
 
 import co.edu.udea.certification.buggycars.models.User;
+import co.edu.udea.certification.buggycars.questions.TheElementIsDisplayed;
 import co.edu.udea.certification.buggycars.questions.TheLoginError;
 import co.edu.udea.certification.buggycars.questions.TheUserName;
 import co.edu.udea.certification.buggycars.tasks.LoginAs;
@@ -62,7 +63,7 @@ public class LoginStepDefinitions {
     public void muestraElErrorDeAutenticacion(String expectedError) {
         theActorInTheSpotlight().should(
                 seeThat(TheLoginError.displayed(), equalTo(expectedError)),
-                seeThat("el link Logout es visible", Visibility.of(HomePage.LOGOUT_LINK), is(false))
+                seeThat(TheElementIsDisplayed.now(HomePage.LOGOUT_LINK), is(false))
         );
     }
 
@@ -70,7 +71,7 @@ public class LoginStepDefinitions {
     public void muestraElFormularioDeLogin() {
         theActorInTheSpotlight().should(
                 seeThat("el boton Login es visible", Visibility.of(HomePage.LOGIN_BUTTON), is(true)),
-                seeThat("el link Logout es visible", Visibility.of(HomePage.LOGOUT_LINK), is(false))
+                seeThat(TheElementIsDisplayed.now(HomePage.LOGOUT_LINK), is(false))
         );
     }
 }

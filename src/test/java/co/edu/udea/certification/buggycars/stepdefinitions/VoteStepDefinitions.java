@@ -3,6 +3,7 @@ package co.edu.udea.certification.buggycars.stepdefinitions;
 import co.edu.udea.certification.buggycars.exceptions.ExpectedResultNotFoundError;
 import co.edu.udea.certification.buggycars.models.User;
 import co.edu.udea.certification.buggycars.questions.TheCommentList;
+import co.edu.udea.certification.buggycars.questions.TheElementIsDisplayed;
 import co.edu.udea.certification.buggycars.questions.TheVoteCount;
 import co.edu.udea.certification.buggycars.questions.TheVoteStatus;
 import co.edu.udea.certification.buggycars.tasks.LoginAs;
@@ -19,7 +20,6 @@ import io.cucumber.java.en.When;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import net.serenitybdd.screenplay.Actor;
-import net.serenitybdd.screenplay.questions.Visibility;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.theActorInTheSpotlight;
@@ -99,8 +99,8 @@ public class VoteStepDefinitions {
     @Then("the voting form is not shown")
     public void noSeMuestraElFormularioParaVotar() {
         theActorInTheSpotlight().should(
-                seeThat("el campo de comentario es visible", Visibility.of(ModelDetailPage.COMMENT_FIELD), is(false)),
-                seeThat("el boton Vote! es visible", Visibility.of(ModelDetailPage.VOTE_BUTTON), is(false))
+                seeThat(TheElementIsDisplayed.now(ModelDetailPage.COMMENT_FIELD), is(false)),
+                seeThat(TheElementIsDisplayed.now(ModelDetailPage.VOTE_BUTTON), is(false))
         );
     }
 }
